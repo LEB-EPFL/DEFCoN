@@ -1,1 +1,12 @@
+# Emacs
 *~
+
+# Python
+__pycache__
+.ipynb_checkpoints
+DEFCoN.egg-info/
+build/
+dist/
+
+# PyCharm
+.idea
