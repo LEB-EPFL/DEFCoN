@@ -57,6 +57,8 @@ def train(config_file):
     """
     tf_init()
 
+    # TODO Create the trained_models and weights directories specified in the config file if they don't exist.
+    # Otherwise, we get a totally uncool error if they don't exist.
     #%% Config parser
     config = configparser.ConfigParser()
     config.read(config_file)

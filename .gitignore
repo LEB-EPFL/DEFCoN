@@ -10,3 +10,6 @@ dist/
 
 # PyCharm
 .idea
+
+# DEFCoN examples
+examples/DEFCoN_example_data*

@@ -92,7 +92,7 @@ def gen_map_stack(frame_gt,
 
     # Dont take into account the fluorophores that are not visible
     # The rule is empirical: the brightness should be over 250
-    print('Removing low-brigthness molecules')
+    print('Removing low-brightness molecules')
     ground_truth = ground_truth[ground_truth['brightness'] > threshold]
     print('Done.')
 
