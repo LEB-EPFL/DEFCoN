@@ -7,28 +7,59 @@ fluorescent spot counter for single molecule localization microscopy.
 
 ## Description
 
-The "DEFCoN" folder is a python package containing all the necessary
-methods to run DEFCoN. "workflow_example.ipynb" and the "example"
-folder can be used to perform a step-by-step standard wrokflow for
-DEFCoN, from SASS training images to prediction and serving.
+DEFCoN is a fluorescent spot counter implemented as a fully
+convolutional neural network. It is designed with the following
+criteria in mind:
 
-The "FCNN" folder is just a legacy name for the DEFCoN package. I keep
-it just to ensure backward compatibility with the rest of my code. It
-will issue a warning if the name "FCNN" is imported instead of
-"DEFCoN", but it shouldn't be the case for any function in the
-package.
-
-"recommended_config.ini" contains the training parameters used in the
-thesis. The example config file have fewer epochs and larger batch
-size, to run faster.
+- Fast enough for real-time analysis (~10 ms per frame)
+- Parameter free predictions
+- Trainable on custom datasets
 
 ## Installation
 
---
+### Requirements
 
-## Documentation
+**DEFCoN requires Python 3.5, TensorFlow 1.4.1, and Keras
+2.1.1**. Please see the setup.py file for the full list of required
+packages
 
---
+### Installing tensorflow-gpu (optional, but recommended)
+
+We recommend using following the directions for installing Tensorflow
+to ensure that it is properly configured to use your system's GPU:
+https://www.tensorflow.org/install/install_linux#installing_with_anaconda
+
+In particular, we use the following commands from within a Python
+virtual environment:
+
+```
+pip install --ignore-installed --upgrade tensorflow-gpu==1.4.1
+```
+
+### DEFCoN
+
+To install DEFCoN, use the following command from inside DEFCoN's
+parent directory:
+
+```
+pip install DEFCoN
+```
+
+If you wish to develop DEFCoN, we recommend installing as a
+development package:
+
+```
+pip install -e DEFCoN
+```
+
+## Quickstart
+
+DEFCoN is a pre-designed, fully convolutional neural network
+architecture that you interact with through a Python API. To get
+started, download and run the
+[quickstart.ipynb](https://github.com/kmdouglass/DEFCoN/blob/FIRST_RELEASE/examples/quickstart.ipynb)
+Jupyter notebook in the [examples
+folder](https://github.com/kmdouglass/DEFCoN/tree/FIRST_RELEASE/examples).
 
 ## Getting Help
 
@@ -44,3 +75,9 @@ size, to run faster.
 - [TensorFlow](https://www.tensorflow.org/)
 - [Keras](https://keras.io/)
 - [NumPy](http://www.numpy.org/)
+- [h5py](http://www.h5py.org/)
+- [Jupyter](https://jupyter.org/)
+- [scikit-image](http://scikit-image.org/)
+- [tifffile](https://pypi.python.org/pypi/tifffile)
+- [Pandas](https://pandas.pydata.org/)
+ 
