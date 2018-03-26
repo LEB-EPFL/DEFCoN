@@ -19,17 +19,17 @@ criteria in mind:
 
 ### Requirements
 
-**DEFCoN requires Python 3.5, TensorFlow 1.4.1, and Keras
-2.1.1**. Please see the setup.py file for the full list of required
-packages
+Please see the setup.py file for the full list of required
+packages. Please note that DEFCoN requires Python 3.5, TensorFlow 1.4.1,
+and Keras 2.1.1, specifically.
 
 ### Installing tensorflow-gpu (optional, but recommended)
 
-We recommend using following the directions for installing Tensorflow
+We recommend using the following directions for installing Tensorflow
 to ensure that it is properly configured to use your system's GPU:
 https://www.tensorflow.org/install/install_linux#installing_with_anaconda
 
-In particular, we use the following commands from within a Python
+In particular, we use the following command from within a Python
 virtual environment:
 
 ```
