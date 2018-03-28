@@ -23,13 +23,14 @@ criteria in mind:
 ### Requirements
 
 Please see the setup.py file for the full list of required
-packages. Please note that DEFCoN requires Python 3.5, TensorFlow
-1.4.1, and Keras 2.1.1, specifically.
+packages. Specifically, DEFCoN requires Python 3.5, TensorFlow
+1.4.1, and Keras 2.1.1.
 
 ### DEFCoN
 
-To install DEFCoN, use the following command from inside DEFCoN's
-parent directory:
+To install DEFCoN, clone this repository and then use the following
+command from inside DEFCoN's parent directory (the one above the
+cloned repository):
 
 ```
 pip install DEFCoN
