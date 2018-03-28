@@ -60,7 +60,7 @@ def gen_map_stack(frame_gt,
     """Generates a HDF5 file with the density maps given in inputFile
 
     Parameters
-    ----
+    ----------
     frame_gt : str or pandas.DataFrame
             CSV file or pandas.DataFrame containing the ground truth positions,
             with the first column being the frame, and the second and third
@@ -90,11 +90,16 @@ def gen_map_stack(frame_gt,
         raise GroundTruthFormatError
         ('The ground truth must be either a csv file or a pandas.DataFrame')
 
-    # Dont take into account the fluorophores that are not visible
-    # The rule is empirical: the brightness should be over 250
+    # Dont take into account the fluorophores with weak signals.
     print('Removing low-brightness molecules')
-    ground_truth = ground_truth[ground_truth['brightness'] > threshold]
-    print('Done.')
+
+    # TODO Add unit test for this.
+    try:
+        ground_truth = ground_truth[ground_truth['brightness'] > threshold]
+        print('Done.')
+    except KeyError:
+        print('No column named "brightness" detected. No thresholding on '
+              'fluorophore brightness will be performed.')
 
     # Group by frame
     idx = ground_truth.groupby('frame')
