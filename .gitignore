@@ -1,0 +1,15 @@
+# Emacs
+*~
+
+# Python
+__pycache__
+.ipynb_checkpoints
+DEFCoN.egg-info/
+build/
+dist/
+
+# PyCharm
+.idea
+
+# DEFCoN examples
+examples/DEFCoN_example_data*
