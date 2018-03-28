@@ -30,12 +30,16 @@ class TrainingSet(h5py.File):
     >>>     f.summary()
 
     """
-
     def __init__(self, *args, **kwargs):
         h5py.File.__init__(self, *args, **kwargs)
         for group in ['input', 'target']:
             if group not in self:
                 self.create_group(group)
+
+    def __repr__(self):
+        r = '{0}(\'{1}\', mode=\'{2}\')'
+        return r.format(self.__class__.__name__, self.filename, self.mode)
+
 
     def add_input(self, input_file, name=None, input_dataset=None):
         """Adds a new raw dataset to the HDF file.

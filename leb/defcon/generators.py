@@ -1,5 +1,5 @@
 # © All rights reserved. ECOLE POLYTECHNIQUE FEDERALE DE LAUSANNE,
-# Switzerland, Laboratory of Experimental Biophysics
+# Switzerland, Laboratory of Experimental Biophysics, 2018
 # See the LICENSE.txt file for more details.
 
 import os.path
