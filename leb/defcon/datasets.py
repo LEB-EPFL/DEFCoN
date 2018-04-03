@@ -2,13 +2,15 @@
 # Switzerland, Laboratory of Experimental Biophysics, 2018
 # See the LICENSE.txt file for more details.
 
-import h5py
-from skimage import io
-import numpy as np
 import os
 
-from .labeling import gen_map_stack
+import h5py
+import numpy as np
+from skimage import io
+
 from leb.defcon import augmentors
+from .labeling import gen_map_stack
+
 
 class TrainingSet(h5py.File):
     """Creates an interface to HDF files that contain training data for DEFCoN.
@@ -337,6 +339,7 @@ def tiff_to_array(input_file):
         The normalized array of images.
 
     """
+    # TODO Add unit test for this method.
     data = io.imread(input_file)
     if data.ndim == 3:
         data = data[:, :, :, np.newaxis]
