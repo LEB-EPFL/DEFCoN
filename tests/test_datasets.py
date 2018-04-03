@@ -26,7 +26,7 @@ class TestTrainingSetMethods(unittest.TestCase):
             pass
 
 
-class TestTrainingSetMethods_Files(unittest.TestCase):
+class TestTrainingSetMethods_IO(unittest.TestCase):
     """Test case for tests requiring file input/output.
 
     """
@@ -36,15 +36,25 @@ class TestTrainingSetMethods_Files(unittest.TestCase):
         self.tmp_tiff_stack = tempfile.mkstemp(suffix='.tif')[1]
         tifffile.imsave(self.tmp_tiff_stack, shape=(2, 2, 1), dtype='uint8')
 
+        self.tmp_training_set_with_data = tempfile.mkstemp()[1]
+        with h5py.File(self.tmp_training_set_with_data, 'w') as f:
+            f['input/dset1'] = np.random.randint(0, 255, (16, 16, 1))
+
     def test_add_input_tiff(self):
         """Tests the addition of a tif image to the dataset."""
-        with datasets.TrainingSet(self.tmp_training_set, mode='w') as test_set:
-            test_set.add_input(self.tmp_tiff_stack, 'test_tif')
+        with datasets.TrainingSet(self.tmp_training_set, mode='w') as t:
+            t.add_input(self.tmp_tiff_stack, 'test_tif')
 
         with h5py.File(self.tmp_training_set, 'r') as f:
             assert 'input/test_tif' in f.keys(), \
                 'Error: Test image not found in training set!'
 
+    def test_lengths(self):
+        """Are the lengths of the input datasets correctly returned?"""
+        with datasets.TrainingSet(self.tmp_training_set_with_data, 'r+') as t:
+            lengths = t.lengths()
+
+        assert (lengths[0], 1)
 
 class TestTiffToArray(unittest.TestCase):
     """Test case for the tiff_to_array method.
