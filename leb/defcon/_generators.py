@@ -1,16 +1,15 @@
 # © All rights reserved. ECOLE POLYTECHNIQUE FEDERALE DE LAUSANNE,
-# Switzerland, Laboratory of Experimental Biophysics
+# Switzerland, Laboratory of Experimental Biophysics, 2018
 # See the LICENSE.txt file for more details.
 
+import math
 import os.path
+import random
 
 import numpy as np
-import random
-import math
-
 from keras.utils import HDF5Matrix
 
-from leb.defcon import augmentors
+from leb.defcon import _augmentors
 
 
 #%%
@@ -39,7 +38,7 @@ class DataIterator():
     def augment(self, batch):
         #batch = augmentors.intensity_curves(batch)
         #batch = augmentors.contrast(batch)
-        batch = augmentors.brightness(batch)
+        batch = _augmentors.brightness(batch)
         #batch = augmentors.gaussnoise(batch)
         return batch
 
@@ -67,7 +66,8 @@ class DataIterator():
                     X_batch = self.augment(X_batch)
 
                     if crops > 0:
-                        (X_batch, y_batch, y_seg_batch) = augmentors.random_crops(
+                        (X_batch, y_batch,
+                         y_seg_batch) = _augmentors.random_crops(
                                 X_batch, y_batch, y_seg_batch, n_crops=crops, crop_dim=20)
 
                     if output=='both':

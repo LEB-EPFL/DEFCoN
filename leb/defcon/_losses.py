@@ -1,9 +1,10 @@
 # © All rights reserved. ECOLE POLYTECHNIQUE FEDERALE DE LAUSANNE,
-# Switzerland, Laboratory of Experimental Biophysics
+# Switzerland, Laboratory of Experimental Biophysics, 2018
 # See the LICENSE.txt file for more details.
 
-from keras import backend as K
 import tensorflow as tf
+from keras import backend as K
+
 
 def pixel_count_loss(lambda_factor=0.01):
     def loss(y_pred, y_true):

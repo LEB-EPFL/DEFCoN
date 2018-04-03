@@ -85,6 +85,10 @@ started, download and run the
 Jupyter notebook in the [examples
 folder](https://github.com/kmdouglass/DEFCoN/tree/FIRST_RELEASE/examples).
 
+All DEFCoN modules are in the public API **unless their name starts
+with an underscore.** The contents of private modules are intended for
+internal use only.
+
 ## Getting Help
 
 - How to use DEFCoN: https://gitter.im/leb_epfl/DEFCoN

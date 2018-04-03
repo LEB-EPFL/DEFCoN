@@ -1,15 +1,15 @@
 # © All rights reserved. ECOLE POLYTECHNIQUE FEDERALE DE LAUSANNE,
-# Switzerland, Laboratory of Experimental Biophysics
+# Switzerland, Laboratory of Experimental Biophysics, 2018
 # See the LICENSE.txt file for more details.
 
 import os
 
-import numpy as np
 import h5py
+import numpy as np
 import pandas as pd
-
-from scipy.stats import multivariate_normal
 import tifffile
+from scipy.stats import multivariate_normal
+
 
 #%% generate_map function
 def generate_map(locs, x_max=64, y_max=64, sigma=1):
@@ -60,7 +60,7 @@ def gen_map_stack(frame_gt,
     """Generates a HDF5 file with the density maps given in inputFile
 
     Parameters
-    ----
+    ----------
     frame_gt : str or pandas.DataFrame
             CSV file or pandas.DataFrame containing the ground truth positions,
             with the first column being the frame, and the second and third
@@ -90,11 +90,16 @@ def gen_map_stack(frame_gt,
         raise GroundTruthFormatError
         ('The ground truth must be either a csv file or a pandas.DataFrame')
 
-    # Dont take into account the fluorophores that are not visible
-    # The rule is empirical: the brightness should be over 250
+    # Dont take into account the fluorophores with weak signals.
     print('Removing low-brightness molecules')
-    ground_truth = ground_truth[ground_truth['brightness'] > threshold]
-    print('Done.')
+
+    # TODO Add unit test for this.
+    try:
+        ground_truth = ground_truth[ground_truth['brightness'] > threshold]
+        print('Done.')
+    except KeyError:
+        print('No column named "brightness" detected. No thresholding on '
+              'fluorophore brightness will be performed.')
 
     # Group by frame
     idx = ground_truth.groupby('frame')

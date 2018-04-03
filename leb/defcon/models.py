@@ -3,6 +3,7 @@
 # See the LICENSE.txt file for more details.
 
 
+import keras.backend as K
 from keras.layers import (Conv2D,
                           Conv3D,
                           Input,
@@ -11,8 +12,8 @@ from keras.layers import (Conv2D,
                           TimeDistributed,
                           UpSampling3D)
 from keras.models import Model
-from .layers import convReLU, deconvReLU, convReLU_3D
-import keras.backend as K
+
+from ._layers import convReLU, deconvReLU, convReLU_3D
 
 
 def DEFCoN(input_size=(None,None,1), output='density'):
