@@ -8,8 +8,8 @@ import h5py
 import numpy as np
 from skimage import io
 
-from leb.defcon import augmentors
-from .labeling import gen_map_stack
+from leb.defcon import _augmentors
+from ._labeling import gen_map_stack
 
 
 class TrainingSet(h5py.File):
@@ -226,6 +226,11 @@ class TrainingSet(h5py.File):
         l : array_like
             A list of the lengths of the input datasets.
 
+        Notes
+        -----
+        This method requires that the TrainingSet is open with write intent. Use
+        mode='r+' when creating the TrainingSet.
+
         """
         l = []
         for i, dataset in enumerate(self['input']):
@@ -318,7 +323,7 @@ def compact_set(
             if augment is True:
                 if group == 'input':
                     print('Augmenting data...')
-                    compact_set = augmentors.brightness(compact_set)
+                    compact_set = _augmentors.brightness(compact_set)
             output.create_dataset(group + '/' + group, data=compact_set)
 
 

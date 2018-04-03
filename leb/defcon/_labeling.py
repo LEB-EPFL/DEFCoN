@@ -1,15 +1,15 @@
 # © All rights reserved. ECOLE POLYTECHNIQUE FEDERALE DE LAUSANNE,
-# Switzerland, Laboratory of Experimental Biophysics
+# Switzerland, Laboratory of Experimental Biophysics, 2018
 # See the LICENSE.txt file for more details.
 
 import os
 
-import numpy as np
 import h5py
+import numpy as np
 import pandas as pd
-
-from scipy.stats import multivariate_normal
 import tifffile
+from scipy.stats import multivariate_normal
+
 
 #%% generate_map function
 def generate_map(locs, x_max=64, y_max=64, sigma=1):

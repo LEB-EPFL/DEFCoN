@@ -2,22 +2,22 @@
 # Switzerland, Laboratory of Experimental Biophysics, 2018.
 # See the LICENSE.txt file for more details.
 
-import numpy as np
 import configparser
 import os
 import random
 import sys
 from pathlib import Path
 
-from keras.optimizers import Adam
-from keras.callbacks import ModelCheckpoint, EarlyStopping
-from keras import backend as K
+import numpy as np
 import tensorflow as tf
+from keras import backend as K
+from keras.callbacks import ModelCheckpoint, EarlyStopping
+from keras.optimizers import Adam
 
 from leb.defcon import models
-from leb.defcon.losses import pixel_count_loss
+from leb.defcon._generators import get_matrices
+from leb.defcon._losses import pixel_count_loss
 from leb.defcon.networks import FCN
-from leb.defcon.generators import get_matrices
 
 
 def _tf_init(seed=42, gpu_fraction=0.4):
