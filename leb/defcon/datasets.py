@@ -322,16 +322,19 @@ def compact_set(
             output.create_dataset(group + '/' + group, data=compact_set)
 
 
-def tiff_to_array(input_file):
+def tiff_to_array(input_file, normalize=True):
     """Transforms a tiff image/stack into a (n, x, y, 1) numpy array of floats.
 
-    This function is used to convert tiff images to input arrays. The inputs
-    are converted to floats and normalized between 0 and 1.
+    This function is used to convert tiff images to input arrays. By default,
+    the inputs are converted to floats and normalized between 0 and 1 by
+    dividing pixel values by the bit depth of the images.
 
     Parameters
     ----------
     input_file : str
         Path and filename to the TIF image/stack.
+    normalize : bool
+        Determines whether the images will be normalized.
 
     Returns
     -------
@@ -339,14 +342,13 @@ def tiff_to_array(input_file):
         The normalized array of images.
 
     """
-    # TODO Add unit test for this method.
     data = io.imread(input_file)
     if data.ndim == 3:
         data = data[:, :, :, np.newaxis]
     elif data.ndim == 2:
         data = data[np.newaxis, :, :, np.newaxis]
     else:
-        raise ImageDimError('Tiff image should be grayscale, and 2D '
+        raise ImageDimError('Tiff image should be grayscale and 2D '
                             '(3D if stack)')
     # Converting from uint to float
     if data.dtype == 'uint8':
@@ -356,7 +358,10 @@ def tiff_to_array(input_file):
     else:
         raise ImageTypeError('Tiff image type should be uint8 or uint16')
     data = data.astype('float')
-    data /= max_uint
+
+    if normalize:
+        data /= max_uint
+
     return data
 
 
