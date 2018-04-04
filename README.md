@@ -1,5 +1,6 @@
 # DEFCoN
 
+- [![Build Status](https://travis-ci.org/LEB-EPFL/DEFCoN.svg?branch=master)](https://travis-ci.org/LEB-EPFL/DEFCoN)
 - [![Join the chat at https://gitter.im/leb_epfl/DEFCoN](https://badges.gitter.im/leb_epfl/DEFCoN.svg)](https://gitter.im/leb_epfl/DEFCoN?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Density Estimation by Fully Convolutional Networks (DEFCoN) - A
