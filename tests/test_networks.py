@@ -4,6 +4,7 @@
 
 import tempfile
 import unittest
+from pathlib import Path
 
 import numpy as np
 import pkg_resources
@@ -72,10 +73,9 @@ class TestFCNMethodsIO(unittest.TestCase):
             self.ground_truth,
             dtype='uint16')
 
-        tifffile.imsave(
-            '/home/douglass/Desktop/img.tif',
-            self.ground_truth,
-            dtype='uint16')
+        # Output tensor flow graph.
+        self.output_dir = tempfile.mkdtemp()
+        self.output_dir = str(Path(self.output_dir) / Path('tf_output'))
 
     def test_predict_tiff(self):
         """Verify that prediction from an image in a TIF file is approximately correct.
@@ -84,3 +84,17 @@ class TestFCNMethodsIO(unittest.TestCase):
         y_pred = self.model.predict_tiff(self.tmp_tiff_stack)
         dens = np.sum(y_pred.squeeze())
         np.testing.assert_approx_equal(1, dens, significant=1)
+
+    def test_save_tf_model(self):
+        """Does the TensorFlow graph output without error?
+
+        """
+        self.model.save_tf_model(self.output_dir)
+
+        saved_model = Path(self.output_dir) / Path('saved_model.pb')
+        variables_data = Path(self.output_dir) / Path('variables/variables.data-00000-of-00001')
+        variables_index = Path(self.output_dir) / Path('variables/variables.index')
+
+        assert saved_model.exists(), 'Error: Saved model file does not exist.'
+        assert variables_data.exists(), 'Error: Variables data file does not exist.'
+        assert variables_index.exists(), 'Error: Variables index file does not exist.'
