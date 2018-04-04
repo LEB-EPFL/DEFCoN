@@ -16,7 +16,7 @@ criteria in mind:
 - Trainable on custom datasets
 - Simple API
 
-![An example density map estimate from DEFCoN](images/defcon_demo.png)
+![An example density map estimate from DEFCoN](defcon/resources/images/defcon_demo.png)
 
 ## Installation
 
