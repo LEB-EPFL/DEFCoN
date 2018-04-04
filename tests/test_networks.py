@@ -16,9 +16,13 @@ class TestFCNMethods(unittest.TestCase):
     """Test case for methods of the FCN class.
 
     """
-
     def setUp(self):
-        pass
+        """Obtains the path to the DEFCoN model file and loads it.
+
+        """
+        # The DEFCoN model
+        defcon_filename = pkg_resources.resource_filename('defcon.resources', 'defcon_tf13.h5')
+        self.model = networks.FCN.from_file(defcon_filename)
 
     def test_init(self):
         """Can a FCN be initialized from scratch?
@@ -26,14 +30,26 @@ class TestFCNMethods(unittest.TestCase):
         """
         model = networks.FCN()
 
+    def test_density_to_max_count(self):
+        """Checks that a FCN may be correctly converted to a max count network.
+
+        """
+        model = self.model
+        assert (not model._max_count_layers), 'Error: Expected FCN max_count_layers to be False.'
+        old_num_layers = len(model.model.layers)
+
+        model.density_to_max_count()
+        assert model._max_count_layers, 'Error: Expected FCN max_count_layers to be True.'
+        new_num_layers = len(model.model.layers)
+        assert new_num_layers - old_num_layers == 3, 'Error: Incorrect number of layers.'
+
 
 class TestFCNMethodsIO(unittest.TestCase):
     """Test case for FCN methods requiring input/output.
 
     """
-
     def setUp(self):
-        """Obtains the full path to the DEFCoN model file.
+        """Creates a DEFCoN model and a test image file with a single fluorophore.
 
         """
         # The DEFCoN model

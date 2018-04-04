@@ -115,15 +115,6 @@ class FCN():
         else:
             warnings.warn('Model is already in "max_count" configuration')
 
-    def max_count_to_density(self):
-        """Removes max count layers to revert the FCN to a density predictor.
-
-        """
-        if self._max_count_layers == True:
-            self.model.pop().pop().pop()
-            self.model.build()
-        else:
-            warnings.warn('Model is already in "density" configuration')
 
     def save_tf_model(self, export_dir='tf_model', division=None):
         """Saves the FCN as a TensorFlow graph.

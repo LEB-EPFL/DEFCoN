@@ -13,6 +13,10 @@ All notable changes to this project will be documented in this file.
   not.
 - All source code was moved from the leb.defcon package to the defcon
   package.
+  
+### Removed
+- The function **defcon.networks.FCN.max_count_to_density** was removed because it was buggy,
+  could not be made to work in an obvious way, and was likely not useful.
 
 ## [v0.0.0]
 - Initial release.
