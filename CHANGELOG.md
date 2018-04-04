@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 ## Unreleased
 ### Added
 - Unit tests for the **datasets** module were added.
+- The DEFCoN model from the manuscript is located at **defcon/resources/defcon_tf13.h5**. It
+  requires Python 3.6, TensorFlow 1.3, and Keras 2.0.8.
 
 ### Changed
 - Modules were separated into a public and private API. Private
