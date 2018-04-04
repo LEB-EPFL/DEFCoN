@@ -9,6 +9,8 @@ All notable changes to this project will be documented in this file.
 - Modules were separated into a public and private API. Private
   modules have names that begin with underscores; public modules do
   not.
+- All source code was moved from the leb.defcon package to the defcon
+  package.
 
 ## [v0.0.0]
 - Initial release.

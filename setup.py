@@ -5,8 +5,8 @@ except ImportError:
 
 setup(
     name='DEFCoN',
-    version='0.0.0',
-    packages=['leb', 'leb.defcon'],
+    version='0.1.0-dev',
+    packages=['defcon'],
     url='https://github.com/LEB-EPFL/DEFCoN',
     license='BSD3',
     author='Baptiste Ottino, Kyle M. Douglass',

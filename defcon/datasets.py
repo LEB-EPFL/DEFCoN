@@ -8,7 +8,7 @@ import h5py
 import numpy as np
 from skimage import io
 
-from leb.defcon import _augmentors
+from defcon import _augmentors
 from ._labeling import gen_map_stack
 
 
@@ -27,7 +27,7 @@ class TrainingSet(h5py.File):
     Create an empty TrainingSet and print its summary, overwriting any
     existing HDF file.
 
-    >>> from leb.defcon import datasets
+    >>> from defcon import datasets
     >>> with datasets.TrainingSet('training_data.h5', mode='w') as f:
     >>>     f.summary()
 

@@ -3,13 +3,13 @@
 # See the LICENSE.txt file for more details.
 
 import math
-import os.path
 import random
 
 import numpy as np
+import os.path
 from keras.utils import HDF5Matrix
 
-from leb.defcon import _augmentors
+from defcon import _augmentors
 
 
 #%%
