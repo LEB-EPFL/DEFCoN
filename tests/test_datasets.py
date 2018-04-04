@@ -10,7 +10,7 @@ import numpy as np
 import numpy.testing as npt
 import tifffile
 
-import leb.defcon.datasets as datasets
+import defcon.datasets as datasets
 
 
 class TestTrainingSetMethods(unittest.TestCase):

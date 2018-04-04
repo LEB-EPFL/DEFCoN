@@ -14,10 +14,10 @@ from keras import backend as K
 from keras.callbacks import ModelCheckpoint, EarlyStopping
 from keras.optimizers import Adam
 
-from leb.defcon import models
-from leb.defcon._generators import get_matrices
-from leb.defcon._losses import pixel_count_loss
-from leb.defcon.networks import FCN
+from defcon import models
+from defcon._generators import get_matrices
+from defcon._losses import pixel_count_loss
+from defcon.networks import FCN
 
 
 def _tf_init(seed=42, gpu_fraction=0.4):
