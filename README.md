@@ -17,14 +17,18 @@ criteria in mind:
 - Simple API
 
 ![An example density map estimate from DEFCoN](defcon/resources/images/defcon_demo.png)
+![A more challenging example.](defcon/resources/images/defcon_demo_2.png)
 
 ## Installation
 
 ### Requirements
 
 Please see the setup.py file for the full list of required
-packages. Specifically, DEFCoN requires Python 3.5, TensorFlow
-1.4.1, and Keras 2.1.1.
+packages. Specifically, the trained DEFCoN model requires a combination of
+Python 3.6, TensorFlow 1.3.0, and Keras 2.0.8.
+
+A combination of Python 3.5, TensorFlow 1.4.1, and Keras 2.1.1 is known to work
+for training new DEFCoN networks.
 
 ### DEFCoN
 
@@ -57,7 +61,7 @@ virtual environment **after we have already installed DEFCoN.**
 
 ```
 pip uninstall tensorflow
-pip install --ignore-installed --upgrade tensorflow-gpu==1.4.1
+pip install --ignore-installed --upgrade tensorflow-gpu==1.3.0
 ```
 
 For us, uninstalling the CPU version of TensorFlow before installing
@@ -78,16 +82,26 @@ then you should be good to go.
 
 ## Quickstart
 
-DEFCoN is a pre-designed, fully convolutional neural network
-architecture that you interact with through a Python API. To get
-started, download and run the
-[quickstart.ipynb](https://github.com/kmdouglass/DEFCoN/blob/FIRST_RELEASE/examples/quickstart.ipynb)
-Jupyter notebook in the [examples
-folder](https://github.com/kmdouglass/DEFCoN/tree/FIRST_RELEASE/examples).
+### Density Map Prediction
 
-All DEFCoN modules are in the public API **unless their name starts
-with an underscore.** The contents of private modules are intended for
-internal use only.
+```python
+import pkg_resources
+from defcon.networks import FCN
+
+# Obtain the filename for the saved DEFCoN model and load it
+defcon_model = pkg_resources.resource_filename('defcon.resources', 'defcon_tf13.h5')
+model = FCN.from_file(defcon_model)
+
+
+# Predict from a TIF image stack
+tif_file = 'path/to/tif/stack.tif'
+y_pred = model.predict_tiff(tif_file)
+```
+
+### Further Examples
+
+More detailed descriptions on how to perform density map estimations and how
+to train your own DEFCoN network are found in the [examples folder](https://github.com/LEB-EPFL/DEFCoN/tree/master/examples).
 
 ## Getting Help
 

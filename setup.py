@@ -18,7 +18,8 @@ setup(
                       'h5py',
                       'pandas',
                       'tifffile',
-                      'tensorflow==1.4.1',
-                      'keras==2.1.1'],
+                      'tensorflow==1.3.0',
+                      'keras==2.0.8'],
+    package_data={'': ['*.h5']}
 )
 
