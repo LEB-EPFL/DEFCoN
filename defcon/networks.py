@@ -19,7 +19,7 @@ from .models import DEFCoN
 
 class FCN():
     # TODO Fix Tensorflow Runtime error for closed sessions that occurs after running either from_file or save_tf_model.
-    """Interface to a fully convolutional network additional methods.
+    """Interface to a fully convolutional network with additional methods.
 
     A FCN wraps a Keras model and provides additional functionality.
 

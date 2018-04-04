@@ -26,7 +26,7 @@ class TestTrainingSetMethods(unittest.TestCase):
             pass
 
 
-class TestTrainingSetMethods_IO(unittest.TestCase):
+class TestTrainingSetMethodsIO(unittest.TestCase):
     """Test case for tests requiring file input/output.
 
     """
