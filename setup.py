@@ -5,7 +5,7 @@ except ImportError:
 
 setup(
     name='DEFCoN',
-    version='0.1.0-dev',
+    version='0.1.0',
     packages=['defcon'],
     url='https://github.com/LEB-EPFL/DEFCoN',
     license='BSD3',

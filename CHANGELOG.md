@@ -1,11 +1,12 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## Unreleased
+## [v0.1.0]
 ### Added
 - Unit tests for the **datasets** and **networks** module were added.
-- The DEFCoN model from the manuscript is located at **defcon/resources/defcon_tf13.h5**. It
-  requires Python 3.6, TensorFlow 1.3, and Keras 2.0.8.
+- The DEFCoN model from the manuscript is located at
+  **defcon/resources/defcon_tf13.h5**. It requires Python 3.6,
+  TensorFlow 1.3, and Keras 2.0.8.
 
 ### Changed
 - Modules were separated into a public and private API. Private
@@ -22,3 +23,4 @@ All notable changes to this project will be documented in this file.
 - Initial release.
 
 [v0.0.0]: https://github.com/LEB-EPFL/DEFCoN/releases/tag/v0.0.0
+[v0.1.0]: https://github.com/LEB-EPFL/DEFCoN/releases/tag/v0.1.0
